@@ -140,7 +140,6 @@ class FacebookDriver extends HttpDriver implements VerifiesService
             'recipient',
             'timestamp',
             'message',
-            'postback',
         ])->keys()->first();
         switch ($name) {
             case 'referral':
@@ -157,6 +156,9 @@ class FacebookDriver extends HttpDriver implements VerifiesService
                 break;
             case 'checkout_update':
                 return new Events\MessagingCheckoutUpdates($eventData);
+                break;
+            case 'postback':
+                return new Events\MessagingPostbacks($eventData);
                 break;
             default:
                 $event = new GenericEvent($eventData);
