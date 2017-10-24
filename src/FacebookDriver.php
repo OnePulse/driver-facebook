@@ -113,8 +113,7 @@ class FacebookDriver extends HttpDriver implements VerifiesService
                     'sender',
                     'recipient',
                     'timestamp',
-                    'message',
-                    'postback',
+                    'message'
                 ])->isEmpty() === false;
         })->transform(function ($msg) {
             return Collection::make($msg)->toArray();
