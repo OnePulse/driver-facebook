@@ -159,6 +159,9 @@ class FacebookDriver extends HttpDriver implements VerifiesService
             case 'postback':
                 return new Events\MessagingPostbacks($eventData);
                 break;
+            case 'account_linking':
+                return new Events\MessagingAccountLinking($eventData);
+                break;
             default:
                 $event = new GenericEvent($eventData);
                 $event->setName($name);
